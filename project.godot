@@ -11,8 +11,16 @@ config_version=5
 [application]
 
 config/name="Ultimate-Tic-Tac-Toe"
+run/main_scene="res://scene/ultimate_tic_tac_toe_game.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.87451, 0.439216, 0.14902, 1)
+boot_splash/image="res://icon.png"
+boot_splash/use_filter=false
+config/icon="res://icon.png"
+
+[autoload]
+
+Global="*res://script/global.gd"
 
 [display]
 
@@ -25,3 +33,4 @@ window/stretch/mode="canvas_items"
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+environment/defaults/default_clear_color=Color(0.87451, 0.439216, 0.14902, 1)

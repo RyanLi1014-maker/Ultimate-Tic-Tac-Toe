@@ -2,5 +2,8 @@
 .godot/
 *.import
 
+# Godot export path
+dist/
+
 # VScode configurations
 .vscode/
