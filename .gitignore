@@ -1,9 +1,7 @@
-# Godot 4+ specific ignores
+# Editor configurations
+.claude/
 .godot/
-*.import
-
-# Godot export path
-dist/
-
-# VScode configurations
 .vscode/
+
+# Executable export path
+dist/

@@ -1,10 +1,10 @@
-[gd_scene load_steps=52 format=3 uid="uid://dbn3uet282l3a"]
+[gd_scene format=3 uid="uid://dbn3uet282l3a"]
 
 [ext_resource type="PackedScene" uid="uid://dn7krixcqf1nv" path="res://scene/chessboard/cell.tscn" id="1_n4wxx"]
-[ext_resource type="Texture2D" uid="uid://crej6mlcjsnvw" path="res://asset/image/texture/chessboard/small_chessboard_enable.png" id="1_swkhi"]
-[ext_resource type="Script" path="res://script/chessboard/small_chessboard.gd" id="2_osi5y"]
-[ext_resource type="Texture2D" uid="uid://dbfrosc3rpqco" path="res://asset/image/texture/chess_piece/X.png" id="4_rbs3t"]
-[ext_resource type="Texture2D" uid="uid://bc4pvagfkcx8w" path="res://asset/image/texture/chess_piece/O.png" id="5_n6vqo"]
+[ext_resource type="Texture2D" uid="uid://bdtjsy2t228u8" path="res://asset/image/texture/chessboard/small_chessboard_enable.png" id="1_swkhi"]
+[ext_resource type="Script" uid="uid://kvnwvd2fh5j4" path="res://script/chessboard/small_chessboard.gd" id="2_osi5y"]
+[ext_resource type="Texture2D" uid="uid://c3p3t67okjuio" path="res://asset/image/texture/chess_piece/X.png" id="4_rbs3t"]
+[ext_resource type="Texture2D" uid="uid://ch14tew8a8wte" path="res://asset/image/texture/chess_piece/O.png" id="5_n6vqo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uvq14"]
 atlas = ExtResource("4_rbs3t")
@@ -330,55 +330,55 @@ animations = [{
 "speed": 30.0
 }]
 
-[node name="SmallChessboard" type="TextureRect"]
+[node name="SmallChessboard" type="TextureRect" unique_id=163202395]
 custom_minimum_size = Vector2(84, 84)
 texture = ExtResource("1_swkhi")
 script = ExtResource("2_osi5y")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1856514875]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 76.0
 offset_bottom = 76.0
 
-[node name="HBoxContainer1" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer1" type="HBoxContainer" parent="VBoxContainer" unique_id=1150409691]
 layout_mode = 2
 
-[node name="Cell1" parent="VBoxContainer/HBoxContainer1" instance=ExtResource("1_n4wxx")]
+[node name="Cell1" parent="VBoxContainer/HBoxContainer1" unique_id=1433525003 instance=ExtResource("1_n4wxx")]
 layout_mode = 2
 
-[node name="Cell2" parent="VBoxContainer/HBoxContainer1" instance=ExtResource("1_n4wxx")]
+[node name="Cell2" parent="VBoxContainer/HBoxContainer1" unique_id=1027064103 instance=ExtResource("1_n4wxx")]
 layout_mode = 2
 
-[node name="Cell3" parent="VBoxContainer/HBoxContainer1" instance=ExtResource("1_n4wxx")]
+[node name="Cell3" parent="VBoxContainer/HBoxContainer1" unique_id=1378967591 instance=ExtResource("1_n4wxx")]
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=1120169170]
 layout_mode = 2
 
-[node name="Cell1" parent="VBoxContainer/HBoxContainer2" instance=ExtResource("1_n4wxx")]
+[node name="Cell1" parent="VBoxContainer/HBoxContainer2" unique_id=1006104230 instance=ExtResource("1_n4wxx")]
 layout_mode = 2
 
-[node name="Cell2" parent="VBoxContainer/HBoxContainer2" instance=ExtResource("1_n4wxx")]
+[node name="Cell2" parent="VBoxContainer/HBoxContainer2" unique_id=709800323 instance=ExtResource("1_n4wxx")]
 layout_mode = 2
 
-[node name="Cell3" parent="VBoxContainer/HBoxContainer2" instance=ExtResource("1_n4wxx")]
+[node name="Cell3" parent="VBoxContainer/HBoxContainer2" unique_id=1309765430 instance=ExtResource("1_n4wxx")]
 layout_mode = 2
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer" unique_id=869916843]
 layout_mode = 2
 
-[node name="Cell1" parent="VBoxContainer/HBoxContainer3" instance=ExtResource("1_n4wxx")]
+[node name="Cell1" parent="VBoxContainer/HBoxContainer3" unique_id=1841086283 instance=ExtResource("1_n4wxx")]
 layout_mode = 2
 
-[node name="Cell2" parent="VBoxContainer/HBoxContainer3" instance=ExtResource("1_n4wxx")]
+[node name="Cell2" parent="VBoxContainer/HBoxContainer3" unique_id=1833416040 instance=ExtResource("1_n4wxx")]
 layout_mode = 2
 
-[node name="Cell3" parent="VBoxContainer/HBoxContainer3" instance=ExtResource("1_n4wxx")]
+[node name="Cell3" parent="VBoxContainer/HBoxContainer3" unique_id=1146116016 instance=ExtResource("1_n4wxx")]
 layout_mode = 2
 
-[node name="Icon_X" type="AnimatedSprite2D" parent="."]
+[node name="Icon_X" type="AnimatedSprite2D" parent="." unique_id=1510135474]
 visible = false
 position = Vector2(4, 4)
 scale = Vector2(4.75, 4.75)
@@ -386,7 +386,7 @@ sprite_frames = SubResource("SpriteFrames_1lsrs")
 animation = &"appear"
 centered = false
 
-[node name="Icon_O" type="AnimatedSprite2D" parent="."]
+[node name="Icon_O" type="AnimatedSprite2D" parent="." unique_id=2142748992]
 visible = false
 position = Vector2(4, 4)
 scale = Vector2(4.75, 4.75)

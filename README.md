@@ -1,6 +1,6 @@
 # Ultimate Tic-Tac-Toe
 
-A strategic two-player game built with Godot Engine 4.2, featuring the classic Ultimate Tic-Tac-Toe (also known as Super Tic-Tac-Toe) gameplay.
+A strategic two-player game built with Godot Engine 4.6, featuring the classic Ultimate Tic-Tac-Toe (also known as Super Tic-Tac-Toe) gameplay.
 
 ## 🎮 About the Game
 
@@ -31,7 +31,7 @@ Ultimate Tic-Tac-Toe is an advanced version of the traditional Tic-Tac-Toe game.
 
 ### Built With
 
-- **Godot Engine 4.2** - Game engine
+- **Godot Engine 4.6** - Game engine
 - **GDScript** - Programming language
 - **Rendering Method**: Mobile-optimized renderer
 
@@ -79,7 +79,7 @@ Ultimate-Tic-Tac-Toe/
 
 #### Prerequisites
 
-- [Godot Engine 4.2](https://godotengine.org/download/) or later
+- [Godot Engine 4.6](https://godotengine.org/download/) or later
 
 #### Setup Instructions
 

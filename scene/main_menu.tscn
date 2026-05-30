@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://bmmo08ddok8ix"]
+
+[ext_resource type="Script" uid="uid://8jq3fm75iqdb" path="res://script/main_menu.gd" id="1_cqdm5"]
+[ext_resource type="Theme" uid="uid://dgywkkytdi3kg" path="res://theme/default_ui_theme.tres" id="2_ofhpk"]
+
+[node name="MainMenu" type="Control" unique_id=495853747]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ofhpk")
+script = ExtResource("1_cqdm5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=907761726]
+custom_minimum_size = Vector2(128, 192)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -80.0
+offset_right = 64.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="VBoxContainer" unique_id=1837378408]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Ultimate
+Tic-Tac-Toe"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="VBoxContainer" unique_id=1173611634]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="VBoxContainer" unique_id=1303474264]
+layout_mode = 2
+text = "New Game"
+
+[node name="ResumeButton" type="Button" parent="VBoxContainer" unique_id=43749341]
+layout_mode = 2
+text = "Resume Game"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=1020397446]
+layout_mode = 2
+text = "Quit Game"
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

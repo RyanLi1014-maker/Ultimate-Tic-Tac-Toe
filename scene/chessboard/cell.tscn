@@ -1,10 +1,11 @@
-[gd_scene load_steps=52 format=3 uid="uid://dn7krixcqf1nv"]
+[gd_scene format=3 uid="uid://dn7krixcqf1nv"]
 
-[ext_resource type="Texture2D" uid="uid://cgsqonv3cvscs" path="res://asset/image/texture/chessboard/cell_enable.png" id="1_wcefj"]
-[ext_resource type="Texture2D" uid="uid://c0cmjxnte4md3" path="res://asset/image/texture/chessboard/cell_disable.png" id="2_pslgs"]
-[ext_resource type="Texture2D" uid="uid://dbfrosc3rpqco" path="res://asset/image/texture/chess_piece/X.png" id="3_602hr"]
-[ext_resource type="Script" path="res://script/chessboard/cell.gd" id="3_qdfg4"]
-[ext_resource type="Texture2D" uid="uid://bc4pvagfkcx8w" path="res://asset/image/texture/chess_piece/O.png" id="4_q7xet"]
+[ext_resource type="Texture2D" uid="uid://cf8nwpn6pxfv3" path="res://asset/image/texture/chessboard/cell_enable.png" id="1_wcefj"]
+[ext_resource type="Texture2D" uid="uid://s7crff8xhu3f" path="res://asset/image/texture/chessboard/cell_disable.png" id="2_pslgs"]
+[ext_resource type="Texture2D" uid="uid://c3p3t67okjuio" path="res://asset/image/texture/chess_piece/X.png" id="3_602hr"]
+[ext_resource type="Script" uid="uid://cfegq0ygejhfr" path="res://script/chessboard/cell.gd" id="3_qdfg4"]
+[ext_resource type="Texture2D" uid="uid://ch14tew8a8wte" path="res://asset/image/texture/chess_piece/O.png" id="4_q7xet"]
+[ext_resource type="AudioStream" uid="uid://cel0ghnbp38jm" path="res://asset/sound/place_chess_piece.mp3" id="6_fckmp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uvq14"]
 atlas = ExtResource("3_602hr")
@@ -330,7 +331,7 @@ animations = [{
 "speed": 30.0
 }]
 
-[node name="Cell" type="TextureButton"]
+[node name="Cell" type="TextureButton" unique_id=1998985149]
 custom_minimum_size = Vector2(20, 20)
 offset_right = 20.0
 offset_bottom = 20.0
@@ -338,18 +339,21 @@ texture_normal = ExtResource("1_wcefj")
 texture_disabled = ExtResource("2_pslgs")
 script = ExtResource("3_qdfg4")
 
-[node name="ChessPiece_X" type="AnimatedSprite2D" parent="."]
+[node name="ChessPiece_X" type="AnimatedSprite2D" parent="." unique_id=623491228]
 visible = false
 position = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ehm8u")
 animation = &"appear"
 centered = false
 
-[node name="ChessPiece_O" type="AnimatedSprite2D" parent="."]
+[node name="ChessPiece_O" type="AnimatedSprite2D" parent="." unique_id=496937075]
 visible = false
 position = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_hkiou")
 animation = &"appear"
 centered = false
+
+[node name="PlaceChessPieceSound" type="AudioStreamPlayer" parent="." unique_id=235066992]
+stream = ExtResource("6_fckmp")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

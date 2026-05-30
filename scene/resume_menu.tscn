@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://b0lmyui2fewog"]
+
+[ext_resource type="Theme" uid="uid://dgywkkytdi3kg" path="res://theme/default_ui_theme.tres" id="1_dvi8i"]
+[ext_resource type="Script" uid="uid://c8kp103au6wft" path="res://script/resume_menu.gd" id="2_l2i5x"]
+
+[node name="ResumeMenu" type="Control" unique_id=168574984]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_dvi8i")
+script = ExtResource("2_l2i5x")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1309576947]
+custom_minimum_size = Vector2(128, 192)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -8.0
+offset_right = 44.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=558600316]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Resume Game"
+horizontal_alignment = 1
+
+[node name="ItemList" type="ItemList" parent="VBoxContainer" unique_id=2082866291]
+custom_minimum_size = Vector2(128, 160)
+layout_mode = 2
+tooltip_text = "Select the game you want to resume"
+
+[node name="ReturnButton" type="Button" parent="." unique_id=1797926183]
+custom_minimum_size = Vector2(72, 32)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -52.0
+offset_right = 92.0
+offset_bottom = -20.0
+grow_vertical = 0
+text = "Return"
+
+[node name="DeleteButton" type="Button" parent="." unique_id=196929493]
+custom_minimum_size = Vector2(72, 32)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -92.0
+offset_top = -102.0
+offset_right = -20.0
+offset_bottom = -70.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Delete"
+
+[node name="ContinueButton" type="Button" parent="." unique_id=1924278711]
+custom_minimum_size = Vector2(72, 32)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -92.0
+offset_top = -52.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Continue"
+
+[connection signal="item_clicked" from="VBoxContainer/ItemList" to="." method="_on_item_list_item_clicked"]
+[connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="DeleteButton" to="." method="_on_delete_button_pressed"]
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]

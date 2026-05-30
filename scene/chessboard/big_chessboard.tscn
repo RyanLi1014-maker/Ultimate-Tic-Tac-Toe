@@ -1,54 +1,54 @@
-[gd_scene load_steps=4 format=3 uid="uid://c55saolt1x4ey"]
+[gd_scene format=3 uid="uid://c55saolt1x4ey"]
 
 [ext_resource type="PackedScene" uid="uid://dbn3uet282l3a" path="res://scene/chessboard/small_chessboard.tscn" id="1_7qy28"]
-[ext_resource type="Texture2D" uid="uid://dpottu8h1nkef" path="res://asset/image/texture/chessboard/main_chessboard.png" id="1_hohph"]
-[ext_resource type="Script" path="res://script/chessboard/big_chessboard.gd" id="2_8u1pg"]
+[ext_resource type="Texture2D" uid="uid://c15ixr4w0b1w4" path="res://asset/image/texture/chessboard/main_chessboard.png" id="1_hohph"]
+[ext_resource type="Script" uid="uid://dbxswnpi0cevm" path="res://script/chessboard/big_chessboard.gd" id="2_8u1pg"]
 
-[node name="BigChessboard" type="TextureRect"]
+[node name="BigChessboard" type="TextureRect" unique_id=1903358010]
 offset_right = 270.0
 offset_bottom = 270.0
 texture = ExtResource("1_hohph")
 script = ExtResource("2_8u1pg")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1587889086]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 265.0
 offset_bottom = 265.0
 
-[node name="HBoxContainer1" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer1" type="HBoxContainer" parent="VBoxContainer" unique_id=2014442979]
 layout_mode = 2
 
-[node name="SmallChessboard1" parent="VBoxContainer/HBoxContainer1" instance=ExtResource("1_7qy28")]
+[node name="SmallChessboard1" parent="VBoxContainer/HBoxContainer1" unique_id=919104268 instance=ExtResource("1_7qy28")]
 layout_mode = 2
 
-[node name="SmallChessboard2" parent="VBoxContainer/HBoxContainer1" instance=ExtResource("1_7qy28")]
+[node name="SmallChessboard2" parent="VBoxContainer/HBoxContainer1" unique_id=495558712 instance=ExtResource("1_7qy28")]
 layout_mode = 2
 
-[node name="SmallChessboard3" parent="VBoxContainer/HBoxContainer1" instance=ExtResource("1_7qy28")]
+[node name="SmallChessboard3" parent="VBoxContainer/HBoxContainer1" unique_id=876352104 instance=ExtResource("1_7qy28")]
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=1045516973]
 layout_mode = 2
 
-[node name="SmallChessboard1" parent="VBoxContainer/HBoxContainer2" instance=ExtResource("1_7qy28")]
+[node name="SmallChessboard1" parent="VBoxContainer/HBoxContainer2" unique_id=105221644 instance=ExtResource("1_7qy28")]
 layout_mode = 2
 
-[node name="SmallChessboard2" parent="VBoxContainer/HBoxContainer2" instance=ExtResource("1_7qy28")]
+[node name="SmallChessboard2" parent="VBoxContainer/HBoxContainer2" unique_id=61744985 instance=ExtResource("1_7qy28")]
 layout_mode = 2
 
-[node name="SmallChessboard3" parent="VBoxContainer/HBoxContainer2" instance=ExtResource("1_7qy28")]
+[node name="SmallChessboard3" parent="VBoxContainer/HBoxContainer2" unique_id=125456851 instance=ExtResource("1_7qy28")]
 layout_mode = 2
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer" unique_id=846637432]
 layout_mode = 2
 
-[node name="SmallChessboard1" parent="VBoxContainer/HBoxContainer3" instance=ExtResource("1_7qy28")]
+[node name="SmallChessboard1" parent="VBoxContainer/HBoxContainer3" unique_id=984317870 instance=ExtResource("1_7qy28")]
 layout_mode = 2
 
-[node name="SmallChessboard2" parent="VBoxContainer/HBoxContainer3" instance=ExtResource("1_7qy28")]
+[node name="SmallChessboard2" parent="VBoxContainer/HBoxContainer3" unique_id=1439377903 instance=ExtResource("1_7qy28")]
 layout_mode = 2
 
-[node name="SmallChessboard3" parent="VBoxContainer/HBoxContainer3" instance=ExtResource("1_7qy28")]
+[node name="SmallChessboard3" parent="VBoxContainer/HBoxContainer3" unique_id=733563433 instance=ExtResource("1_7qy28")]
 layout_mode = 2

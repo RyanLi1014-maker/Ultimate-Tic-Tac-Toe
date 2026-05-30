@@ -1,22 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://cj6ipdhd0grxa"]
+[gd_scene format=3 uid="uid://cj6ipdhd0grxa"]
 
-[ext_resource type="Script" path="res://script/ultimate_tic_tac_toe_game.gd" id="1_vkkxu"]
+[ext_resource type="Script" uid="uid://dls5lwkt1e7wg" path="res://script/ultimate_tic_tac_toe_game.gd" id="1_vkkxu"]
 [ext_resource type="PackedScene" uid="uid://c55saolt1x4ey" path="res://scene/chessboard/big_chessboard.tscn" id="2_6qqhr"]
-[ext_resource type="FontFile" uid="uid://c3i8to7pidbq5" path="res://asset/font/VonwaonBitmap16px.ttf" id="3_xcb4u"]
+[ext_resource type="Theme" uid="uid://dgywkkytdi3kg" path="res://theme/default_ui_theme.tres" id="3_ur7d3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xeg3o"]
 region = Rect2(160, 16, 16, 16)
 
-[node name="Ultimate-Tic-Tac-Toe_Game" type="Control"]
+[node name="Ultimate-Tic-Tac-Toe_Game" type="Control" unique_id=1295740783]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_ur7d3")
 script = ExtResource("1_vkkxu")
 
-[node name="BigChessboard" parent="." instance=ExtResource("2_6qqhr")]
+[node name="BigChessboard" parent="." unique_id=1702102130 instance=ExtResource("2_6qqhr")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -30,26 +31,68 @@ offset_bottom = 135.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CurrentPlayerInfo" type="VBoxContainer" parent="."]
-layout_mode = 2
+[node name="CurrentPlayerInfo" type="VBoxContainer" parent="." unique_id=2049757599]
+layout_mode = 0
 offset_left = 26.25
 offset_top = 16.0
 offset_right = 82.25
 offset_bottom = 111.0
 size_flags_horizontal = 0
 
-[node name="Label" type="Label" parent="CurrentPlayerInfo"]
+[node name="Label" type="Label" parent="CurrentPlayerInfo" unique_id=581026674]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_xcb4u")
 text = "Current
 Player"
 
-[node name="TextureRect" type="TextureRect" parent="CurrentPlayerInfo"]
+[node name="TextureRect" type="TextureRect" parent="CurrentPlayerInfo" unique_id=1817504434]
 layout_mode = 2
 texture = SubResource("AtlasTexture_xeg3o")
 expand_mode = 4
 
-[node name="WinnerMessage" type="PanelContainer" parent="."]
+[node name="PauseMenu" type="PanelContainer" parent="." unique_id=2060527986]
+process_mode = 3
+visible = false
+custom_minimum_size = Vector2(128, 192)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu" unique_id=1366529844]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="PauseMenu/VBoxContainer" unique_id=647650292]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="PauseMenu/VBoxContainer" unique_id=1117104538]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="RestartButton" type="Button" parent="PauseMenu/VBoxContainer" unique_id=980356205]
+layout_mode = 2
+text = "Restart Game"
+
+[node name="BackButton" type="Button" parent="PauseMenu/VBoxContainer" unique_id=116887826]
+layout_mode = 2
+text = "Main menu"
+
+[node name="ContinueButton" type="Button" parent="PauseMenu/VBoxContainer" unique_id=1230567679]
+layout_mode = 2
+text = "Continue"
+
+[node name="WinnerMessage" type="PanelContainer" parent="." unique_id=2057546607]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -58,7 +101,33 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="WinnerMessage"]
+[node name="VBoxContainer" type="VBoxContainer" parent="WinnerMessage" unique_id=719766260]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="WinnerMessage/VBoxContainer" unique_id=816817085]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+text = "Player X/O wins!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Control" type="Control" parent="WinnerMessage/VBoxContainer" unique_id=312161205]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="RestartButton" type="Button" parent="WinnerMessage/VBoxContainer" unique_id=1943779997]
+layout_mode = 2
+text = "Restart Game"
+
+[node name="BackButton" type="Button" parent="WinnerMessage/VBoxContainer" unique_id=380119294]
+layout_mode = 2
+text = "Main menu"
+
+[connection signal="win" from="BigChessboard" to="." method="_on_big_chessboard_win"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="WinnerMessage/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="WinnerMessage/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
