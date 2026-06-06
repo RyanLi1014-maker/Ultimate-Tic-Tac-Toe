@@ -1,10 +1,15 @@
 # A single 3×3 small board within the larger Ultimate Tic-Tac-Toe grid.
 # Manages its 9 child cells, detects wins/ties, and updates its visual
-# State (enabled/disabled texture + winner icon) whenever the disabled property changes.
+# state (enabled/disabled texture + winner icon) whenever the disabled property changes.
 extends TextureRect
 class_name SmallChessboard
 
 const BOARD_SPACING := 88 # Pixel distance between boards in the big-board layout
+
+const STATE_TEXTURES := [
+    preload("res://asset/image/texture/chessboard/small_chessboard_disable.png"),
+    preload("res://asset/image/texture/chessboard/small_chessboard_enable.png"),
+]
 
 var disabled := false:
     set(value):
@@ -15,43 +20,47 @@ var disabled := false:
 
 var occupier: String = "" # "X" or "O" once won; "" if undecided
 
-var cells: Array = [[], [], []] # 3×3 grid of Cell references
+@onready var game = get_tree().current_scene
+@onready var _icon_x := $Icon_X
+@onready var _icon_o := $Icon_O
+@onready var _parent := get_parent()
 
-var state_textures: Array = [
-    preload("res://asset/image/texture/chessboard/small_chessboard_disable.png"),
-    preload("res://asset/image/texture/chessboard/small_chessboard_enable.png")
-]
+var cells := [[], [], []] # 3×3 grid of Cell references
 
 signal small_chessboard_occupied(grid_position: Vector2) # This board's position in the big board
 
 
 func _ready() -> void:
     # Build the 2D cell grid from the scene hierarchy and connect signals
-    for r in $VBoxContainer.get_children():
-        for c in r.get_children():
-            cells[r.get_index()].append(c)
-            c.cell_occupied.connect(_on_cell_occupied)
+    var rows := $VBoxContainer.get_children()
+    for r_idx in rows.size():
+        var row := rows[r_idx]
+        var col_nodes := row.get_children()
+        for c_idx in col_nodes.size():
+            var cell := col_nodes[c_idx]
+            cells[r_idx].append(cell)
+            cell.cell_occupied.connect(_on_cell_occupied)
     _refresh()
 
 
 # Called when a cell inside this board is pressed.
 # Checks for a winner — if found, marks the board as won and plays the
-# Winner icon animation. If the board is full with no winner, marks it tied.
+# winner icon animation. If the board is full with no winner, marks it tied.
 func _on_cell_occupied(_cell_grid_position: Vector2) -> void:
-    var winner = check_winner()
+    var winner := check_winner()
     if winner:
         occupier = winner
         disabled = true
         match winner:
             "X":
-                $Icon_X.visible = true
-                $Icon_X.play("appear")
+                _icon_x.visible = true
+                _icon_x.play("appear")
             "O":
-                $Icon_O.visible = true
-                $Icon_O.play("appear")
-        small_chessboard_occupied.emit(
-            Vector2(position.x / BOARD_SPACING, get_parent().position.y / BOARD_SPACING)
-        )
+                _icon_o.visible = true
+                _icon_o.play("appear")
+        small_chessboard_occupied.emit(Vector2(
+            position.x / BOARD_SPACING, _parent.position.y / BOARD_SPACING
+        ))
     elif is_full():
         disabled = true
 
@@ -60,34 +69,33 @@ func _on_cell_occupied(_cell_grid_position: Vector2) -> void:
 func is_full() -> bool:
     for r in cells:
         for c in r:
-            if not c.occupier:
+            if c.occupier.is_empty():
                 return false
     return true
 
 
 # Checks this board's 3×3 for a win (rows, columns, diagonals).
+# Accesses cells directly to avoid allocating an intermediate occupiers array.
 # Returns "X", "O", or "" (no winner).
 func check_winner() -> String:
-    var occupiers: Array = [[], [], []]
-    for r in cells.size():
-        for c in cells[r]:
-            occupiers[r].append(c.occupier)
+    if occupier:
+        return ""
 
     # Rows
     for i in 3:
-        if _three_equal(occupiers[i][0], occupiers[i][1], occupiers[i][2]):
-            return occupiers[i][0]
+        if _three_equal(cells[i][0].occupier, cells[i][1].occupier, cells[i][2].occupier):
+            return cells[i][0].occupier
 
     # Columns
     for j in 3:
-        if _three_equal(occupiers[0][j], occupiers[1][j], occupiers[2][j]):
-            return occupiers[0][j]
+        if _three_equal(cells[0][j].occupier, cells[1][j].occupier, cells[2][j].occupier):
+            return cells[0][j].occupier
 
     # Diagonals
-    if _three_equal(occupiers[0][0], occupiers[1][1], occupiers[2][2]):
-        return occupiers[0][0]
-    if _three_equal(occupiers[0][2], occupiers[1][1], occupiers[2][0]):
-        return occupiers[0][2]
+    if _three_equal(cells[0][0].occupier, cells[1][1].occupier, cells[2][2].occupier):
+        return cells[0][0].occupier
+    if _three_equal(cells[0][2].occupier, cells[1][1].occupier, cells[2][0].occupier):
+        return cells[0][2].occupier
 
     return ""
 
@@ -101,12 +109,12 @@ static func _three_equal(a: String, b: String, c: String) -> bool:
 # If re-enabling but the board is full or won, it re-disables itself.
 func _refresh() -> void:
     if disabled:
-        texture = state_textures[0]
-    elif is_full() or occupier:
+        texture = STATE_TEXTURES[0]
+    elif is_full() or (occupier and game.game_mode != "Strategy"):
         disabled = true
         return
     else:
-        texture = state_textures[1]
+        texture = STATE_TEXTURES[1]
 
     # Sync cell states — occupied cells stay disabled regardless of board state
     for r in cells:

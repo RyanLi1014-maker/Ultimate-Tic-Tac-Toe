@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://cxfcosyfv1yfw"]
+
+[ext_resource type="Theme" uid="uid://dgywkkytdi3kg" path="res://theme/default_ui_theme.tres" id="1_8l8s4"]
+[ext_resource type="Script" uid="uid://e42sldl35xu2" path="res://script/scene/game_mode_selection.gd" id="2_c7twt"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_c7twt"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_ndeyk"]
+events = [SubResource("InputEventKey_c7twt")]
+
+[node name="GameModeSelection" type="Control" unique_id=298856485]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_8l8s4")
+script = ExtResource("2_c7twt")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1312924321]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=223539960]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=2088897160]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StrategyButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1639335909]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Strategy"
+
+[node name="NormalButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1739018909]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Normal"
+
+[node name="QuickButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1030083515]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Quick"
+
+[node name="ReturnButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1773612936]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+shortcut = SubResource("Shortcut_ndeyk")
+text = "Return"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/StrategyButton" to="." method="_on_strategy_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/NormalButton" to="." method="_on_normal_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/QuickButton" to="." method="_on_quick_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ReturnButton" to="." method="_on_return_button_pressed"]

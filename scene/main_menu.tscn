@@ -1,7 +1,14 @@
 [gd_scene format=3 uid="uid://bmmo08ddok8ix"]
 
-[ext_resource type="Script" uid="uid://8jq3fm75iqdb" path="res://script/main_menu.gd" id="1_cqdm5"]
+[ext_resource type="Script" uid="uid://8jq3fm75iqdb" path="res://script/scene/main_menu.gd" id="1_cqdm5"]
 [ext_resource type="Theme" uid="uid://dgywkkytdi3kg" path="res://theme/default_ui_theme.tres" id="2_ofhpk"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_hxu56"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_2fwvj"]
+events = [SubResource("InputEventKey_hxu56")]
 
 [node name="MainMenu" type="Control" unique_id=495853747]
 layout_mode = 3
@@ -37,20 +44,38 @@ Tic-Tac-Toe"
 horizontal_alignment = 1
 
 [node name="Control" type="Control" parent="VBoxContainer" unique_id=1173611634]
-custom_minimum_size = Vector2(0, 24)
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
 [node name="StartButton" type="Button" parent="VBoxContainer" unique_id=1303474264]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 text = "New Game"
 
 [node name="ResumeButton" type="Button" parent="VBoxContainer" unique_id=43749341]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 text = "Resume Game"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=1020397446]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
+shortcut = SubResource("Shortcut_2fwvj")
 text = "Quit Game"
+
+[node name="VersionLabel" type="Label" parent="." unique_id=1018844559]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -22.0
+offset_right = 184.0
+offset_bottom = -3.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 8
+text = "Version v0.0.0
+By RyanLi1014-marker <ryanli1014@outlook.com>"
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]

@@ -18,6 +18,14 @@ Ultimate Tic-Tac-Toe is an advanced version of the traditional Tic-Tac-Toe game.
    - If sent to a board that's already won or full, you can play on any available board
    - Once a small board is won or full, it becomes disabled
 
+### Game Modes
+
+The game features three distinct modes to choose from:
+
+- **Normal** — The classic Ultimate Tic-Tac-Toe experience. Win small boards to claim them on the big board. First player to win three small boards in a row wins the game.
+- **Strategy** — A more tactical variant. Won small boards remain playable, meaning you can still be sent to and play inside a board that has already been claimed by either player. This adds an extra layer of strategy, as controlling the flow of play becomes just as important as winning individual boards.
+- **Quick** — A fast-paced variant. The game ends as soon as any small board is won — the first player to win a single small board wins the entire game. Perfect for quick sessions.
+
 ## ✨ Features
 
 - **Strategic Gameplay**: Deep tactical decisions with the unique movement mechanic

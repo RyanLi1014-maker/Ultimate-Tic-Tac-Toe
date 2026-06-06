@@ -1,7 +1,28 @@
 [gd_scene format=3 uid="uid://b0lmyui2fewog"]
 
 [ext_resource type="Theme" uid="uid://dgywkkytdi3kg" path="res://theme/default_ui_theme.tres" id="1_dvi8i"]
-[ext_resource type="Script" uid="uid://c8kp103au6wft" path="res://script/resume_menu.gd" id="2_l2i5x"]
+[ext_resource type="Script" uid="uid://c8kp103au6wft" path="res://script/scene/resume_menu.gd" id="2_l2i5x"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_dvi8i"]
+device = -1
+keycode = 4194312
+
+[sub_resource type="Shortcut" id="Shortcut_l2i5x"]
+events = [SubResource("InputEventKey_dvi8i")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_t45y6"]
+device = -1
+keycode = 4194333
+
+[sub_resource type="Shortcut" id="Shortcut_kont8"]
+events = [SubResource("InputEventKey_t45y6")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_ali7t"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_42rw0"]
+events = [SubResource("InputEventKey_ali7t")]
 
 [node name="ResumeMenu" type="Control" unique_id=168574984]
 layout_mode = 3
@@ -13,7 +34,7 @@ grow_vertical = 2
 theme = ExtResource("1_dvi8i")
 script = ExtResource("2_l2i5x")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1309576947]
+[node name="GameList" type="VBoxContainer" parent="." unique_id=1309576947]
 custom_minimum_size = Vector2(128, 192)
 layout_mode = 1
 anchors_preset = 8
@@ -29,63 +50,114 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer" unique_id=558600316]
+[node name="Label" type="Label" parent="GameList" unique_id=558600316]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Resume Game"
 horizontal_alignment = 1
 
-[node name="ItemList" type="ItemList" parent="VBoxContainer" unique_id=2082866291]
+[node name="ItemList" type="ItemList" parent="GameList" unique_id=2082866291]
 custom_minimum_size = Vector2(128, 160)
 layout_mode = 2
 tooltip_text = "Select the game you want to resume"
 
+[node name="OperationList" type="VBoxContainer" parent="." unique_id=898212989]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -92.0
+offset_top = -88.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="DeleteButton" type="Button" parent="OperationList" unique_id=196929493]
+custom_minimum_size = Vector2(72, 24)
+layout_mode = 2
+shortcut = SubResource("Shortcut_l2i5x")
+text = "Delete"
+
+[node name="RenameButton" type="Button" parent="OperationList" unique_id=1202569256]
+custom_minimum_size = Vector2(72, 24)
+layout_mode = 2
+shortcut = SubResource("Shortcut_kont8")
+text = "Rename"
+
+[node name="ContinueButton" type="Button" parent="OperationList" unique_id=1924278711]
+custom_minimum_size = Vector2(72, 24)
+layout_mode = 2
+text = "Continue"
+
 [node name="ReturnButton" type="Button" parent="." unique_id=1797926183]
-custom_minimum_size = Vector2(72, 32)
+custom_minimum_size = Vector2(72, 24)
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 20.0
-offset_top = -52.0
+offset_top = -44.0
 offset_right = 92.0
 offset_bottom = -20.0
 grow_vertical = 0
+shortcut = SubResource("Shortcut_42rw0")
 text = "Return"
 
-[node name="DeleteButton" type="Button" parent="." unique_id=196929493]
-custom_minimum_size = Vector2(72, 32)
+[node name="NameEdit" type="PanelContainer" parent="." unique_id=394924181]
+visible = false
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -92.0
-offset_top = -102.0
-offset_right = -20.0
-offset_bottom = -70.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Delete"
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="ContinueButton" type="Button" parent="." unique_id=1924278711]
-custom_minimum_size = Vector2(72, 32)
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -92.0
-offset_top = -52.0
-offset_right = -20.0
-offset_bottom = -20.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Continue"
+[node name="VBoxContainer" type="VBoxContainer" parent="NameEdit" unique_id=1264138009]
+custom_minimum_size = Vector2(256, 192)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
 
-[connection signal="item_clicked" from="VBoxContainer/ItemList" to="." method="_on_item_list_item_clicked"]
+[node name="Label" type="Label" parent="NameEdit/VBoxContainer" unique_id=1251078276]
+layout_mode = 2
+text = "Rename Game"
+horizontal_alignment = 1
+
+[node name="Control1" type="Control" parent="NameEdit/VBoxContainer" unique_id=144145774]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="NameEdit/VBoxContainer" unique_id=2077137837]
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="NameEdit/VBoxContainer" unique_id=330153094]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NameEdit/VBoxContainer" unique_id=863582165]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="CancelButton" type="Button" parent="NameEdit/VBoxContainer/HBoxContainer" unique_id=2032735175]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cancel"
+
+[node name="ConfirmButton" type="Button" parent="NameEdit/VBoxContainer/HBoxContainer" unique_id=1400983725]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Confirm"
+
+[connection signal="item_activated" from="GameList/ItemList" to="." method="_on_item_list_item_activated"]
+[connection signal="item_selected" from="GameList/ItemList" to="." method="_on_item_list_item_selected"]
+[connection signal="pressed" from="OperationList/DeleteButton" to="." method="_on_delete_button_pressed"]
+[connection signal="pressed" from="OperationList/RenameButton" to="." method="_on_rename_button_pressed"]
+[connection signal="pressed" from="OperationList/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
-[connection signal="pressed" from="DeleteButton" to="." method="_on_delete_button_pressed"]
-[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="NameEdit/VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_name_edit_cancel_button_pressed"]
+[connection signal="pressed" from="NameEdit/VBoxContainer/HBoxContainer/ConfirmButton" to="." method="_on_name_edit_confirm_button_pressed"]

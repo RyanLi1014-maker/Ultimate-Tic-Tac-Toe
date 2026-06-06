@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dn7krixcqf1nv" path="res://scene/chessboard/cell.tscn" id="1_n4wxx"]
 [ext_resource type="Texture2D" uid="uid://bdtjsy2t228u8" path="res://asset/image/texture/chessboard/small_chessboard_enable.png" id="1_swkhi"]
-[ext_resource type="Script" uid="uid://kvnwvd2fh5j4" path="res://script/chessboard/small_chessboard.gd" id="2_osi5y"]
+[ext_resource type="Script" uid="uid://kvnwvd2fh5j4" path="res://script/scene/chessboard/small_chessboard.gd" id="2_osi5y"]
 [ext_resource type="Texture2D" uid="uid://c3p3t67okjuio" path="res://asset/image/texture/chess_piece/X.png" id="4_rbs3t"]
 [ext_resource type="Texture2D" uid="uid://ch14tew8a8wte" path="res://asset/image/texture/chess_piece/O.png" id="5_n6vqo"]
 
@@ -380,6 +380,7 @@ layout_mode = 2
 
 [node name="Icon_X" type="AnimatedSprite2D" parent="." unique_id=1510135474]
 visible = false
+modulate = Color(1, 1, 1, 0.627451)
 position = Vector2(4, 4)
 scale = Vector2(4.75, 4.75)
 sprite_frames = SubResource("SpriteFrames_1lsrs")
@@ -388,6 +389,7 @@ centered = false
 
 [node name="Icon_O" type="AnimatedSprite2D" parent="." unique_id=2142748992]
 visible = false
+modulate = Color(1, 1, 1, 0.627451)
 position = Vector2(4, 4)
 scale = Vector2(4.75, 4.75)
 sprite_frames = SubResource("SpriteFrames_o83t0")

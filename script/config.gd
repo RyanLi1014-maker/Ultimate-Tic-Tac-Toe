@@ -2,6 +2,8 @@
 # Stores game snapshots keyed by timestamp so players can resume later.
 extends Node
 
+const CHESS_GAMES_PATH := "user://chess_games.dat"
+
 var chess_games: Dictionary # All saved games, keyed by timestamp string
 
 
@@ -12,10 +14,10 @@ func _ready() -> void:
 # Loads saved games from disk into chess_games.
 # Returns the loaded dictionary, or an empty dict if no save exists.
 func load_chess_games() -> Dictionary:
-    if FileAccess.file_exists("user://chess_games.dat"):
-        var file = FileAccess.open("user://chess_games.dat", FileAccess.READ)
+    var file := FileAccess.open(CHESS_GAMES_PATH, FileAccess.READ)
+    if file:
         var data = file.get_var()
-        if data != null and typeof(data) == TYPE_DICTIONARY:
+        if typeof(data) == TYPE_DICTIONARY:
             chess_games = data
             return chess_games
     chess_games = {}
@@ -25,5 +27,5 @@ func load_chess_games() -> Dictionary:
 
 # Writes chess_games to disk.
 func save_chess_games() -> void:
-    var file = FileAccess.open("user://chess_games.dat", FileAccess.WRITE)
+    var file := FileAccess.open(CHESS_GAMES_PATH, FileAccess.WRITE)
     file.store_var(chess_games)

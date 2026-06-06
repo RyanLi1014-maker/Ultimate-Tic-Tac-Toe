@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cf8nwpn6pxfv3" path="res://asset/image/texture/chessboard/cell_enable.png" id="1_wcefj"]
 [ext_resource type="Texture2D" uid="uid://s7crff8xhu3f" path="res://asset/image/texture/chessboard/cell_disable.png" id="2_pslgs"]
 [ext_resource type="Texture2D" uid="uid://c3p3t67okjuio" path="res://asset/image/texture/chess_piece/X.png" id="3_602hr"]
-[ext_resource type="Script" uid="uid://cfegq0ygejhfr" path="res://script/chessboard/cell.gd" id="3_qdfg4"]
+[ext_resource type="Script" uid="uid://cfegq0ygejhfr" path="res://script/scene/chessboard/cell.gd" id="3_qdfg4"]
 [ext_resource type="Texture2D" uid="uid://ch14tew8a8wte" path="res://asset/image/texture/chess_piece/O.png" id="4_q7xet"]
 [ext_resource type="AudioStream" uid="uid://cel0ghnbp38jm" path="res://asset/sound/place_chess_piece.mp3" id="6_fckmp"]
 
