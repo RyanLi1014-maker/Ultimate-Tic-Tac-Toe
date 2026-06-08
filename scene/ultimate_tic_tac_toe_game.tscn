@@ -111,10 +111,15 @@ custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 text = "Restart"
 
-[node name="BackButton" type="Button" parent="PauseMenu/MarginContainer/VBoxContainer" unique_id=116887826]
+[node name="ExitButton" type="Button" parent="PauseMenu/MarginContainer/VBoxContainer" unique_id=116887826]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
-text = "Save & Back"
+text = "Exit Anyway"
+
+[node name="SaveExitButton" type="Button" parent="PauseMenu/MarginContainer/VBoxContainer" unique_id=1463663426]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+text = "Save & Exit"
 
 [node name="ContinueButton" type="Button" parent="PauseMenu/MarginContainer/VBoxContainer" unique_id=1230567679]
 custom_minimum_size = Vector2(0, 24)
@@ -190,15 +195,16 @@ custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 text = "Restart Game"
 
-[node name="BackButton" type="Button" parent="WinnerMessage/VBoxContainer" unique_id=380119294]
+[node name="ExitButton" type="Button" parent="WinnerMessage/VBoxContainer" unique_id=380119294]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 text = "Main menu"
 
 [connection signal="win" from="BigChessboard" to="." method="_on_big_chessboard_win"]
 [connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/SaveExitButton" to="." method="_on_save_exit_button_pressed"]
 [connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="GameNameEdit/VBoxContainer/ConfirmButton" to="." method="_on_game_name_edit_confirm_button_pressed"]
 [connection signal="pressed" from="WinnerMessage/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="WinnerMessage/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="WinnerMessage/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

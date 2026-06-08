@@ -65,12 +65,6 @@ func _restore_board(resume_data: Dictionary) -> void:
             _restore_board_cells(board, resume_data["data"][r][c]["cells"])
             # Re-detect small-board wins/ties and update visuals directly
             _restore_board_state(board)
-    # After all boards are restored, check for a big-board win/draw once
-    var big_winner := big_chessboard.check_winner()
-    if big_winner:
-        big_chessboard.win.emit(big_winner)
-    elif big_chessboard.check_draw():
-        big_chessboard.win.emit("")
 
 
 # Re-detects a small board's winner/tie state and updates its visuals.
@@ -163,30 +157,32 @@ func _on_big_chessboard_win(winner: String) -> void:
 
 func _on_restart_button_pressed() -> void:
     SoundManager.play_sfx(SoundManager.BUTTON_PRESS)
+    Global.temp_values["game_mode"] = game_mode
     get_tree().paused = false
     get_tree().change_scene_to_file(GAME_SCENE_PATH)
 
 
-func _on_back_button_pressed() -> void:
+func _on_exit_button_pressed() -> void:
     SoundManager.play_sfx(SoundManager.BUTTON_PRESS)
-    # Save the current game state only if no winner yet
-    if not $WinnerMessage.visible:
-        if game_name:
-            var save_name = Global.get_unique_filename(game_name, Config.chess_games.keys())
-            Config.chess_games[save_name] = _save_board_state()
-            Config.chess_games[save_name]["game_mode"] = game_mode
-            get_tree().paused = false
-            get_tree().change_scene_to_file(MAIN_MENU_PATH)
-        else:
-            var entry := $GameNameEdit/VBoxContainer/LineEdit
-            entry.text = Global.strip_game_mode_prefix(game_name) if game_name \
-                else Time.get_datetime_string_from_system(false, true)
-            entry.select_all()
-            entry.grab_focus()
-            $GameNameEdit.visible = true
-    else:
+    get_tree().paused = false
+    get_tree().change_scene_to_file(MAIN_MENU_PATH)
+
+
+func _on_save_exit_button_pressed() -> void:
+    SoundManager.play_sfx(SoundManager.BUTTON_PRESS)
+    if game_name:
+        var save_name = Global.get_unique_filename(game_name, Config.chess_games.keys())
+        Config.chess_games[save_name] = _save_board_state()
+        Config.chess_games[save_name]["game_mode"] = game_mode
         get_tree().paused = false
         get_tree().change_scene_to_file(MAIN_MENU_PATH)
+    else:
+        var entry := $GameNameEdit/VBoxContainer/LineEdit
+        entry.text = Global.strip_game_mode_prefix(game_name) if game_name \
+            else Time.get_datetime_string_from_system(false, true)
+        entry.select_all()
+        entry.grab_focus()
+        $GameNameEdit.visible = true
 
 
 func _on_continue_button_pressed() -> void:

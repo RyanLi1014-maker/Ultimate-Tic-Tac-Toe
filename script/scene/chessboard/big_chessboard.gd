@@ -51,7 +51,7 @@ func _on_small_chessboard_occupied(small_chessboard_position: Vector2) -> void:
 # and disables all others. If the target is full or already won, all boards
 # end up disabled — _reopen_if_all_disabled re-enables them (free-move rule).
 func _on_cell_occupied(cell_position: Vector2) -> void:
-    var all_disabled := true
+    var all_disabled_1 := true
     for r in small_chessboards:
         for c in r:
             if _board_grid_map.get(c, Vector2(-1, -1)) == cell_position:
@@ -59,23 +59,27 @@ func _on_cell_occupied(cell_position: Vector2) -> void:
             else:
                 c.disabled = true
             if not c.disabled:
-                all_disabled = false
+                all_disabled_1 = false
     # If every board ended up disabled, re-enable all (free-move rule)
-    if all_disabled:
+    if all_disabled_1:
+        # Enable all boards
         for r in small_chessboards:
             for c in r:
                 c.disabled = false
-    # Check for a draw — the last move of a draw does not necessarily occupy a small board
-    elif check_draw():
-        win.emit("")
-
-
-func check_draw() -> bool:
-    for r in small_chessboards:
-        for c in r:
-            if c.occupier.is_empty() and not c.is_full():
-                return false
-    return true
+        # Check for all boards disabled again to check for a draw
+        var all_disabled_2 = true
+        for r in small_chessboards:
+            for c in r:
+                if not c.disabled:
+                    all_disabled_2 = false
+                    break
+        # If the first check finds everything disabled,
+        # and after enabling everything the second check still finds everything disabled,
+        # then it proves there is no way forward, and it is ruled a draw.
+        # To prevent race conditions between occupying the small board and the large board
+        # in determining the winner, check whether someone has won the game.
+        if all_disabled_2 and not check_winner():
+            win.emit("")
 
 
 # Checks the big-board 3×3 for a win (rows, columns, diagonals).
