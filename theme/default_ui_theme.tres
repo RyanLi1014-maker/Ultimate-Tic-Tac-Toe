@@ -1,41 +1,45 @@
 [gd_resource type="Theme" format=3 uid="uid://dgywkkytdi3kg"]
 
+[ext_resource type="Texture2D" uid="uid://cfpp3xr7jn5da" path="res://asset/image/texture/button.png" id="1_huqfc"]
 [ext_resource type="FontFile" uid="uid://b3c8owlk1micr" path="res://asset/font/VonwaonBitmap16px.ttf" id="1_vdubp"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dgujx"]
-bg_color = Color(0.53333336, 0.53333336, 0.53333336, 0.627451)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p0r2l"]
+texture = ExtResource("1_huqfc")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+modulate_color = Color(0.4, 0.4, 0.4, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n5ai2"]
-bg_color = Color(0.9607843, 0.53333336, 0.27450982, 0.627451)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dahwq"]
+texture = ExtResource("1_huqfc")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pyeum"]
-bg_color = Color(0.94334424, 0.49636996, 0.21810138, 0.627451)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pnkio"]
+texture = ExtResource("1_huqfc")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+modulate_color = Color(0.8666667, 0.8666667, 0.8666667, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nr1kh"]
-bg_color = Color(0.9601657, 0.53229254, 0.27476743, 0.627451)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j5b7m"]
+texture = ExtResource("1_huqfc")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ajcd"]
-bg_color = Color(0.7969351, 0.38779274, 0.10631078, 0.627451)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dgujx"]
+texture = ExtResource("1_huqfc")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+modulate_color = Color(0.73333335, 0.73333335, 0.73333335, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p0r2l"]
 bg_color = Color(0.67058825, 0.31764707, 0.06666667, 0.627451)
@@ -95,15 +99,16 @@ corner_radius_bottom_left = 4
 
 [resource]
 default_font = ExtResource("1_vdubp")
-Button/colors/font_color = Color(1, 1, 1, 1)
-Button/colors/font_focus_color = Color(1, 1, 1, 1)
-Button/colors/font_hover_color = Color(0.866667, 0.866667, 0.866667, 1)
-Button/colors/font_pressed_color = Color(0.733333, 0.733333, 0.733333, 1)
-Button/styles/disabled = SubResource("StyleBoxFlat_dgujx")
-Button/styles/focus = SubResource("StyleBoxFlat_n5ai2")
-Button/styles/hover = SubResource("StyleBoxFlat_pyeum")
-Button/styles/normal = SubResource("StyleBoxFlat_nr1kh")
-Button/styles/pressed = SubResource("StyleBoxFlat_3ajcd")
+Button/colors/font_color = Color(0.89169973, 0.32068416, 0.30823973, 1)
+Button/colors/font_focus_color = Color(0.8901961, 0.32156864, 0.30980393, 1)
+Button/colors/font_hover_color = Color(0.8646171, 0.2962573, 0.28780565, 1)
+Button/colors/font_hover_pressed_color = Color(0.83137256, 0.27450982, 0.26666668, 1)
+Button/colors/font_pressed_color = Color(0.8296295, 0.27406344, 0.26504073, 1)
+Button/styles/disabled = SubResource("StyleBoxTexture_p0r2l")
+Button/styles/focus = SubResource("StyleBoxTexture_dahwq")
+Button/styles/hover = SubResource("StyleBoxTexture_pnkio")
+Button/styles/normal = SubResource("StyleBoxTexture_j5b7m")
+Button/styles/pressed = SubResource("StyleBoxTexture_dgujx")
 ItemList/colors/font_color = Color(1, 1, 1, 1)
 ItemList/colors/font_hovered_color = Color(0.8666667, 0.8666667, 0.8666667, 1)
 ItemList/colors/font_hovered_selected_color = Color(0.73333335, 0.73333335, 0.73333335, 1)
